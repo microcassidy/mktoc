@@ -1,0 +1,5 @@
+all: pdf_with_toc.pdf generated.tex
+pdf_with_toc.pdf: generated.tex
+	latexmk -xelatex $^
+generated.tex: input_pdf.pdf
+	python mktoc/mktoc.py -i $^ -o $@ --start 14 --stop 19 --offset 1
